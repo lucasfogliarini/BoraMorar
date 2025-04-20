@@ -1,6 +1,4 @@
-﻿using MediatR;
+﻿namespace BoraCotacoes;
 
-namespace BoraCotacoes;
-
-public interface IDomainEvent : INotification { }
+public interface IDomainEvent;
 
