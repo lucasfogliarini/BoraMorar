@@ -18,7 +18,7 @@ namespace BoraMorar.Tests
             Assert.Equal(expectedStatus, proposta.Status);
             Assert.Equal(expectedCotacaoId, proposta.CotacaoId);
             Assert.StartsWith("PROP-", proposta.Numero);
-            Assert.True((DateTime.Now - proposta.DataCriacao).TotalSeconds < 1);
+            Assert.True((DateTime.Now - proposta.CreatedAt).TotalSeconds < 1);
         }
     }
 }

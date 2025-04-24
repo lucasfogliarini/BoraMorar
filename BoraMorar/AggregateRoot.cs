@@ -4,6 +4,9 @@ namespace BoraMorar
 {
     public abstract class AggregateRoot : Entity<int>
     {
+        public DateTime CreatedAt { get; private set; }
+        public DateTime UpdatedAt { get; private set; }
+
         private List<IDomainEvent> _domainEvents = [];
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
@@ -16,6 +19,15 @@ namespace BoraMorar
         public void ClearDomainEvents()
         {
             _domainEvents.Clear();
+        }
+
+        protected void CreatedNow()
+        {
+            CreatedAt = DateTime.Now;
+        }
+        protected void UpdatedNow()
+        {
+            UpdatedAt = DateTime.Now;
         }
 
         protected string GerarNumero(string prefix) => $"{prefix}-{DateTime.Now:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";

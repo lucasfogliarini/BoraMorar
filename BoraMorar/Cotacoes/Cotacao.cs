@@ -4,12 +4,11 @@ using CSharpFunctionalExtensions;
 
 namespace BoraMorar
 {
-    public class Cotacao : AggregateRoot
+    public class Cotacao : AggregateRoot, IStatusManaged<CotacaoStatus>
     {
         public CotacaoStatus Status { get; private set; }
         public string Numero { get; private set; }
 
-        public DateTime DataCotacaoSolicitada { get; private set; }
         public TipoDoBem TipoDoBem { get; private set; }
         public decimal Preco { get; private set; }
         public int ClienteId { get; private set; }
@@ -34,8 +33,8 @@ namespace BoraMorar
 
         public Cotacao(int clienteId, TipoDoBem tipoDoBem, decimal preco)
         {
-            DataCotacaoSolicitada = DateTime.Now;
-            ChangeStatus(CotacaoStatus.CotacaoSolicitada, DataCotacaoSolicitada);
+            CreatedNow();
+            ChangeStatus(CotacaoStatus.CotacaoSolicitada);
             Numero = GerarNumero("COT");
             ClienteId = clienteId;
             TipoDoBem = tipoDoBem;
@@ -45,7 +44,7 @@ namespace BoraMorar
         public void SolicitarRenda(int corretorId)
         {
             DataRendaSolicitada = DateTime.Now;
-            ChangeStatus(CotacaoStatus.RendaSolicitada, DataRendaSolicitada);
+            ChangeStatus(CotacaoStatus.RendaSolicitada);
             Status = CotacaoStatus.RendaSolicitada;
             CorretorId = corretorId;
         }
@@ -53,7 +52,7 @@ namespace BoraMorar
         public void InformarCompromissoFinanceiro(decimal rendaBrutaMensal, int prazoPretendido)
         {
             DataCompromissoFinanceiroInformado = DateTime.Now;
-            ChangeStatus(CotacaoStatus.CompromissoFinanceiroInformado, DataCompromissoFinanceiroInformado);
+            ChangeStatus(CotacaoStatus.CompromissoFinanceiroInformado);
             RendaBrutaMensal = rendaBrutaMensal;
             PrazoPretendido = prazoPretendido;
         }
@@ -66,7 +65,7 @@ namespace BoraMorar
                     .Tap(() =>
                     {
                         DataPrestacoesCalculadas = DateTime.Now;
-                        ChangeStatus(CotacaoStatus.PrestacoesCalculadas, DataCotacaoAprovada);
+                        ChangeStatus(CotacaoStatus.PrestacoesCalculadas);
                         TaxaJuros = taxaJuros;
                         PrazoMaximo = prazoMaximo;
                         PrestacaoPrazoPretendido = CalcularPrice(taxaJuros, PrazoPretendido);
@@ -77,13 +76,14 @@ namespace BoraMorar
         public void AprovarCotacao()
         {
             DataCotacaoAprovada = DateTime.Now;
-            ChangeStatus(CotacaoStatus.CotacaoAprovada, DataCotacaoAprovada);
+            ChangeStatus(CotacaoStatus.CotacaoAprovada);
         }
 
-        private void ChangeStatus(CotacaoStatus newStatus, DateTime changedAt)
+        public void ChangeStatus(CotacaoStatus newStatus)
         {
             Status = newStatus;
-            AddDomainEvent(new CotacaoStatusChangedDomainEvent(Id, Status, changedAt));
+            UpdatedNow();
+            AddDomainEvent(new CotacaoStatusChangedDomainEvent(Id, Status, UpdatedAt));
         }
 
         /// <summary>
