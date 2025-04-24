@@ -20,12 +20,12 @@ namespace BoraMorar.Contratos
             Proposta = proposta;
             PropostaId = proposta.Id;
             Numero = GenerateNumeroContrato();
-            DataAssinatura = DateTime.UtcNow;
+            DataAssinatura = DateTime.Now;
         }
 
         private string GenerateNumeroContrato()
         {
-            return $"CONT-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
+            return $"CONT-{DateTime.Now:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
         }
     }
 

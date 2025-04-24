@@ -13,7 +13,7 @@
         {
             Numero = GerarNumero("PROP");
             CotacaoId = cotacaoId;
-            DataCriacao = DateTime.UtcNow;
+            DataCriacao = DateTime.Now;
             Status = PropostaStatus.Gerada;
         }
     }

@@ -34,7 +34,7 @@ namespace BoraMorar
 
         public Cotacao(int clienteId, TipoDoBem tipoDoBem, decimal preco)
         {
-            DataCotacaoSolicitada = DateTime.UtcNow;
+            DataCotacaoSolicitada = DateTime.Now;
             ChangeStatus(CotacaoStatus.CotacaoSolicitada, DataCotacaoSolicitada);
             Numero = GerarNumero("COT");
             ClienteId = clienteId;
@@ -44,7 +44,7 @@ namespace BoraMorar
 
         public void SolicitarRenda(int corretorId)
         {
-            DataRendaSolicitada = DateTime.UtcNow;
+            DataRendaSolicitada = DateTime.Now;
             ChangeStatus(CotacaoStatus.RendaSolicitada, DataRendaSolicitada);
             Status = CotacaoStatus.RendaSolicitada;
             CorretorId = corretorId;
@@ -52,7 +52,7 @@ namespace BoraMorar
 
         public void InformarCompromissoFinanceiro(decimal rendaBrutaMensal, int prazoPretendido)
         {
-            DataCompromissoFinanceiroInformado = DateTime.UtcNow;
+            DataCompromissoFinanceiroInformado = DateTime.Now;
             ChangeStatus(CotacaoStatus.CompromissoFinanceiroInformado, DataCompromissoFinanceiroInformado);
             RendaBrutaMensal = rendaBrutaMensal;
             PrazoPretendido = prazoPretendido;
@@ -65,7 +65,7 @@ namespace BoraMorar
                     .Ensure(()=> prazoMaximo > 0, "O prazo máximo deve ser maior que zero.")
                     .Tap(() =>
                     {
-                        DataPrestacoesCalculadas = DateTime.UtcNow;
+                        DataPrestacoesCalculadas = DateTime.Now;
                         ChangeStatus(CotacaoStatus.PrestacoesCalculadas, DataCotacaoAprovada);
                         TaxaJuros = taxaJuros;
                         PrazoMaximo = prazoMaximo;
@@ -76,7 +76,7 @@ namespace BoraMorar
 
         public void AprovarCotacao()
         {
-            DataCotacaoAprovada = DateTime.UtcNow;
+            DataCotacaoAprovada = DateTime.Now;
             ChangeStatus(CotacaoStatus.CotacaoAprovada, DataCotacaoAprovada);
         }
 

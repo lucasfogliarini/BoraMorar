@@ -38,7 +38,7 @@ namespace BoraMorar.Tests
             // Assert
             Assert.Equal(expectedStatus, cotacao.Status);
             Assert.Equal(expectedCorretorId, cotacao.CorretorId);
-            Assert.True((DateTime.UtcNow - cotacao.DataRendaSolicitada).TotalSeconds < 1);
+            Assert.True((DateTime.Now - cotacao.DataRendaSolicitada).TotalSeconds < 1);
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace BoraMorar.Tests
 
             // Assert
             Assert.Equal(expectedStatus, cotacao.Status);
-            Assert.True((DateTime.UtcNow - cotacao.DataCotacaoAprovada).TotalSeconds < 1);
+            Assert.True((DateTime.Now - cotacao.DataCotacaoAprovada).TotalSeconds < 1);
         }
     }
 }

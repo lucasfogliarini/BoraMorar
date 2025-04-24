@@ -18,6 +18,6 @@ namespace BoraMorar
             _domainEvents.Clear();
         }
 
-        protected string GerarNumero(string prefix) => $"{prefix}-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
+        protected string GerarNumero(string prefix) => $"{prefix}-{DateTime.Now:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
     }
 }
