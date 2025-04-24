@@ -1,4 +1,4 @@
-﻿namespace BoraCotacoes.Propostas
+﻿namespace BoraCotacoes.Cotacoes
 {
     public enum TipoDoBem
     {

@@ -37,7 +37,7 @@ namespace BoraCotacoes
         {
             DataCotacaoSolicitada = DateTime.UtcNow;
             ChangeStatus(CotacaoStatus.CotacaoSolicitada, DataCotacaoSolicitada);
-            Numero = GenerateNumero();
+            Numero = GerarNumero();
             ClienteId = clienteId;
             TipoDoBem = tipoDoBem;
             Preco = preco;
@@ -92,7 +92,7 @@ namespace BoraCotacoes
         /// </summary>
         private decimal CalcularPrice(decimal taxaJuros, int prazo) => Preco * taxaJuros / (1 - (decimal)Math.Pow(1 + (double)taxaJuros, -prazo));
 
-        private string GenerateNumero() => $"COT-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";       
+        private string GerarNumero() => $"COT-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";       
     }
 
 }
