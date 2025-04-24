@@ -36,7 +36,7 @@ namespace BoraMorar
         {
             DataCotacaoSolicitada = DateTime.UtcNow;
             ChangeStatus(CotacaoStatus.CotacaoSolicitada, DataCotacaoSolicitada);
-            Numero = GerarNumero();
+            Numero = GerarNumero("COT");
             ClienteId = clienteId;
             TipoDoBem = tipoDoBem;
             Preco = preco;
@@ -90,8 +90,5 @@ namespace BoraMorar
         /// //Fórmula de amortização price https://chatgpt.com/?q=TabelaPrice
         /// </summary>
         private decimal CalcularPrice(decimal taxaJuros, int prazo) => Preco * taxaJuros / (1 - (decimal)Math.Pow(1 + (double)taxaJuros, -prazo));
-
-        private string GerarNumero() => $"COT-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";       
     }
-
 }

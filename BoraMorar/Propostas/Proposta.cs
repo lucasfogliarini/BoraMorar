@@ -11,14 +11,9 @@
 
         public Proposta(int cotacaoId)
         {
-            Numero = GenerateNumeroProposta();
+            Numero = GerarNumero("PROP");
             CotacaoId = cotacaoId;
             DataCriacao = DateTime.UtcNow;
-        }
-
-        private string GenerateNumeroProposta()
-        {
-            return $"PROP-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}";
         }
     }
 
