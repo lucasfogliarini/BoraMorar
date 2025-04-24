@@ -5,7 +5,7 @@ namespace BoraMorar.Tests
     public class PropostaTests
     {
         [Fact]
-        public void Instantiate_WhenValidParameters_ShouldInitializeSuccessfully()
+        public void GerarProposta_WhenValidParameters_ShouldInitializeSuccessfully()
         {
             // Arrange
             var expectedStatus = PropostaStatus.Gerada;

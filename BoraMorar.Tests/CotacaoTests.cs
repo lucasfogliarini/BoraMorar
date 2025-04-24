@@ -5,7 +5,7 @@ namespace BoraMorar.Tests
     public class CotacaoTests
     {
         [Fact]
-        public void Instantiate_WhenValidParameters_ShouldInitializeSuccessfully()
+        public void SolicitarCotacao_WhenValidParameters_ShouldInitializeSuccessfully()
         {
             // Arrange
             var expectedStatus = CotacaoStatus.CotacaoSolicitada;
