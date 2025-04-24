@@ -1,4 +1,6 @@
-﻿namespace BoraMorar.Contratos
+﻿using BoraMorar.Propostas;
+
+namespace BoraMorar.Contratos
 {
     public class Contrato
     {

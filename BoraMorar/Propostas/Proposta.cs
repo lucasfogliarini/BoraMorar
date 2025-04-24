@@ -1,10 +1,10 @@
-﻿namespace BoraMorar
+﻿namespace BoraMorar.Propostas
 {
     public class Proposta : AggregateRoot
     {
         public int CotacaoId { get; set; }
         public string Numero { get; private set; }
-        public StatusProposta Status { get; private set; }
+        public PropostaStatus Status { get; private set; }
         public DateTime DataCriacao { get; private set; }
 
         private Proposta() { }
@@ -14,16 +14,7 @@
             Numero = GerarNumero("PROP");
             CotacaoId = cotacaoId;
             DataCriacao = DateTime.UtcNow;
+            Status = PropostaStatus.Gerada;
         }
-    }
-
-    public enum StatusProposta
-    {
-        Solicitada,
-        AprovadaFinanceiramente,        
-        AprovadaPeloCliente,
-        ContratoAssinado,
-        Rejeitada,
-        Cancelada
     }
 }
