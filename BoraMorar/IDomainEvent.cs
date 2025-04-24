@@ -1,4 +1,4 @@
-﻿namespace BoraCotacoes;
+﻿namespace BoraMorar;
 
 public interface IDomainEvent;
 

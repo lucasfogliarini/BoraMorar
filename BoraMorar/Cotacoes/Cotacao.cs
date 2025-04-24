@@ -1,9 +1,8 @@
-﻿using BoraCotacoes.Cotacoes;
-using BoraCotacoes.Cotacoes.DomainEvents;
-using BoraCotacoes.Propostas;
+﻿using BoraMorar.Cotacoes;
+using BoraMorar.Cotacoes.DomainEvents;
 using CSharpFunctionalExtensions;
 
-namespace BoraCotacoes
+namespace BoraMorar
 {
     public class Cotacao : AggregateRoot
     {

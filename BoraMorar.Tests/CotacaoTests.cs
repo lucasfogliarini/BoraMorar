@@ -1,6 +1,4 @@
-using BoraCotacoes;
-using BoraCotacoes.Cotacoes;
-using Xunit;
+using BoraMorar.Cotacoes;
 
 namespace BoraMorar.Tests
 {

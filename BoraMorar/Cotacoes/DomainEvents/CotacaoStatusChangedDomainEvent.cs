@@ -1,4 +1,4 @@
-﻿namespace BoraCotacoes.Cotacoes.DomainEvents
+﻿namespace BoraMorar.Cotacoes.DomainEvents
 {
     public record CotacaoStatusChangedDomainEvent(int Id, CotacaoStatus Status, DateTime ChangedAt) : IDomainEvent { }
 }

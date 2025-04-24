@@ -1,4 +1,4 @@
-﻿namespace BoraCotacoes.Contratos
+﻿namespace BoraMorar.Contratos
 {
     public class Contrato
     {

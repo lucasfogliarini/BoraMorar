@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 
-namespace BoraCotacoes
+namespace BoraMorar
 {
     public abstract class AggregateRoot : Entity<int>
     {
