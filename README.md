@@ -1,7 +1,7 @@
 # Bora Morar
 
 ## Análise técnica
-  Analise tecnicamente este repositório com o __ChatGPT__, utilizando esta [conversa iniciada](https://chatgpt.com/share/6809fc6c-4c18-8013-b37d-4073a4ece18e) ou [iniciando uma nova](http://chatgpt.com/?q=Analise%20tecnicamente%20esse%20reposit%C3%B3rio%20github.com/lucasfogliarini/BoraMorar)
+  Analise tecnicamente este repositório com o __ChatGPT__, utilizando esta [conversa iniciada](https://chatgpt.com/share/6810f0b5-2324-8013-8e02-bd0972231b25) ou [iniciando uma nova](http://chatgpt.com/?q=Analise%20tecnicamente%20esse%20reposit%C3%B3rio%20github.com/lucasfogliarini/BoraMorar)
 
 ## Referências
 
