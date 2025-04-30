@@ -18,6 +18,7 @@ public class ImovelTests
 
         decimal? preco = null;
         var nome = "Grand Park Moinhos";
+        var incorporadora = Incorporadora.Melnick;
         var areaPrivativa = 73;
         var quartos = 2;
         var banheiros = 2;
@@ -36,6 +37,7 @@ public class ImovelTests
         var imovel = new Imovel(
             nome: nome,
             endereco: endereco,
+            incorporadora: incorporadora,
             preco: preco,
             areaPrivativa: areaPrivativa,
             quartos: quartos,
@@ -49,6 +51,7 @@ public class ImovelTests
         // Assert
         Assert.Equal(nome, imovel.Nome);
         Assert.Equal(endereco, imovel.Endereco);
+        Assert.Equal(incorporadora, imovel.Incorporadora);
         Assert.Null(imovel.Preco);
         Assert.Equal(areaPrivativa, imovel.AreaPrivativa);
         Assert.Equal(quartos, imovel.Quartos);

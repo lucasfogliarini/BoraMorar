@@ -6,6 +6,7 @@
     public class Imovel(
         string nome,
         Endereco endereco,
+        Incorporadora incorporadora,
         decimal? preco,
         int areaPrivativa,
         int quartos,
@@ -24,6 +25,8 @@
         /// Endereço completo do imóvel.
         /// </summary>
         public Endereco Endereco { get; private set; } = endereco;
+
+        public Incorporadora Incorporadora { get; private set; } = incorporadora;
 
         /// <summary>
         /// Preço estimado ou informado do imóvel. Pode ser nulo caso ainda não esteja definido.
