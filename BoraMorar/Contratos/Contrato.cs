@@ -2,11 +2,10 @@
 
 namespace BoraMorar.Contratos
 {
-    public class Contrato
+    public class Contrato :AggregateRoot
     {
-        public int Id { get; set; }
         public string Numero { get; private set; }
-        public int PropostaId { get; private set; }
+        public long PropostaId { get; private set; }
         public Proposta Proposta { get; private set; }
         public DateTime DataAssinatura { get; private set; }
 

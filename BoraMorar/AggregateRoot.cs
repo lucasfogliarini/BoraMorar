@@ -2,7 +2,7 @@
 
 namespace BoraMorar
 {
-    public abstract class AggregateRoot : Entity<int>
+    public abstract class AggregateRoot : Entity<long>
     {
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
