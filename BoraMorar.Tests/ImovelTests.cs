@@ -9,10 +9,11 @@ public class ImovelTests
     {
         // Arrange
         var endereco = new Endereco(
-            Logradouro: "Av. Dr. Sezefredo Azambuja Vieira",
-            Bairro: "Mal. Rondon",
-            Cidade: "Canoas",
-            Cep: "92020-020"
+            tipo: TipoEndereco.Logradouro,
+            logradouro: "Av. Dr. Sezefredo Azambuja Vieira",
+            bairro: "Mal. Rondon",
+            cidade: "Canoas",
+            cep: "92020-020"
         );
 
         decimal? preco = null;
