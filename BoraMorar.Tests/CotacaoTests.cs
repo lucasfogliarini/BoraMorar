@@ -60,7 +60,7 @@ namespace BoraMorar.Tests
         }
 
         [Fact]
-        public void InformarCompromissoFinanceiro_WhenValidData_ShouldSucceed()
+        public void CalcularPrestacoes_WhenValidData_ShouldSucceed()
         {
             // Arrange
             var expectedTaxa = 0.01m;
@@ -81,7 +81,7 @@ namespace BoraMorar.Tests
         }
 
         [Fact]
-        public void InformarCompromissoFinanceiro_WhenInvalidData_ShouldReturnFailure()
+        public void CalcularPrestacoes_WhenInvalidData_ShouldReturnFailure()
         {
             // Arrange
             var cotacao = new Cotacao(1, TipoDoBem.Imovel, 500000);
