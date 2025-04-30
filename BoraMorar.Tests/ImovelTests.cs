@@ -18,11 +18,11 @@ public class ImovelTests
 
         decimal? preco = null;
         var nome = "Grand Park Moinhos";
-        var areaUtil = 73;
+        var areaPrivativa = 73;
         var quartos = 2;
         var banheiros = 2;
         var vagasGaragem = 1;
-        var url = "https://www.melnick.com.br/enterprise/grand-park-moinhos/";
+        var paginaUrl = "https://www.melnick.com.br/enterprise/grand-park-moinhos/";
         var bookUrl = "https://wordpress-melnick.s3.sa-east-1.amazonaws.com/wp-content/uploads/2022/06/31100946/Book-Grand-Park-Moinhos.pdf";
         var caracteristicas = new List<string>
         {
@@ -37,11 +37,11 @@ public class ImovelTests
             nome: nome,
             endereco: endereco,
             preco: preco,
-            areaUtil: areaUtil,
+            areaPrivativa: areaPrivativa,
             quartos: quartos,
             banheiros: banheiros,
             vagasGaragem: vagasGaragem,
-            url: url,
+            paginalUrl: paginaUrl,
             bookUrl,
             caracteristicas: caracteristicas
         );
@@ -50,11 +50,11 @@ public class ImovelTests
         Assert.Equal(nome, imovel.Nome);
         Assert.Equal(endereco, imovel.Endereco);
         Assert.Null(imovel.Preco);
-        Assert.Equal(areaUtil, imovel.AreaUtil);
+        Assert.Equal(areaPrivativa, imovel.AreaPrivativa);
         Assert.Equal(quartos, imovel.Quartos);
         Assert.Equal(banheiros, imovel.Banheiros);
         Assert.Equal(vagasGaragem, imovel.VagasGaragem);
-        Assert.Equal(url, imovel.Url);
+        Assert.Equal(paginaUrl, imovel.PaginaUrl);
         Assert.Equal(bookUrl, imovel.BookUrl);
         Assert.Equal(caracteristicas, imovel.Caracteristicas);
     }
