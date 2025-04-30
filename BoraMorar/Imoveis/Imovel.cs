@@ -65,5 +65,12 @@
         /// Lista de características adicionais do imóvel (ex: "Piscina", "Churrasqueira", "Portaria 24h").
         /// </summary>
         public List<string> Caracteristicas { get; private set; } = caracteristicas ?? [];
+
+        /// <summary>
+        /// Valor do metro quadrado calculado com base no preço total do imóvel
+        /// dividido pela área real privativa.
+        /// </summary>
+        public decimal? PrecoPorAreaPrivativa => (Preco.HasValue && AreaPrivativa > 0) ? Preco.Value / AreaPrivativa : null;
+
     }
 }
