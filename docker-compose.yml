@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  consumers:
+    build: 
+      context: .
+      dockerfile: BoraMorar.Moradias.Functions/Dockerfile
+    container_name: BoraMorar.Moradias.Functions
+    ports:
+      - '1002:1002'
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      AzureWebJobsStorage: "UseDevelopmentStorage=true"
+      FUNCTIONS_WORKER_RUNTIME: "dotnet-isolated"

@@ -2,5 +2,5 @@
 
 public interface IImovelRepository : IAddRepository<Imovel>
 {
-    Task<Imovel?> FindAsync(int id);
+    Task<Imovel?> FindAsync(long id);
 }
