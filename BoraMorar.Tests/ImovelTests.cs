@@ -23,7 +23,7 @@ public class ImovelTests
         var banheiros = 2;
         var vagasGaragem = 1;
         var url = "https://www.melnick.com.br/enterprise/grand-park-moinhos/";
-        var bookUrl = "";
+        var bookUrl = "https://wordpress-melnick.s3.sa-east-1.amazonaws.com/wp-content/uploads/2022/06/31100946/Book-Grand-Park-Moinhos.pdf";
         var caracteristicas = new List<string>
         {
             "Piscina",
