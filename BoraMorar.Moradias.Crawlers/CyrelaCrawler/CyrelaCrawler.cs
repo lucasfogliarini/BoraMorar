@@ -10,7 +10,8 @@ namespace BoraMorar.Moradias.Crawlers
     /// </summary>
     public class CyrelaCrawler : ICyrelaCrawler
     {
-        const string PropertiesUrl = "https://www.cyrela.com.br/empreendimentos";
+        const string BaseUrl = "https://www.cyrela.com.br/";
+        const string PropertiesUrl = "https://www.cyrela.com.br/empreendimentos?field_cidade=218";
 
         /// <summary>
         /// Realiza o processo completo de crawling:
@@ -52,11 +53,29 @@ namespace BoraMorar.Moradias.Crawlers
             var links = document.QuerySelectorAll("a")
                 .Select(a => a.GetAttribute("href"))
                 .Where(href => !string.IsNullOrEmpty(href) && href.Contains("/empreendimentos/"))
-                .Select(href => href.StartsWith("http") ? href : $"https://www.cyrela.com.br{href}")
+                .Select(href => href.StartsWith("http") ? href : $"{BaseUrl}{href}")
                 .Distinct()
                 .ToList();
 
             return links;
+        }
+
+        private int? ExtrairArea(string descricao, IDocument document)
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(descricao, @"(\d+)\s*m²");
+            return match.Success ? int.Parse(match.Groups[1].Value) : ExtrairNumero(document, ".field_suites");
+        }
+
+        private int? ExtrairQuartos(string descricao, IDocument document)
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(descricao, @"(\d+)\s*dormit[óo]rios?");
+            return match.Success ? int.Parse(match.Groups[1].Value) : ExtrairNumero(document, ".field_dormitorios");
+        }
+
+        private int? ExtrairVagas(string descricao, IDocument document)
+        {
+            var match = System.Text.RegularExpressions.Regex.Match(descricao, @"(\d+)\s*vagas?");
+            return match.Success ? int.Parse(match.Groups[1].Value) : ExtrairNumero(document, ".field_vagas");
         }
 
         /// <summary>
@@ -69,21 +88,13 @@ namespace BoraMorar.Moradias.Crawlers
             {
                 var document = await CarregarDocumentoHtmlAsync(url);
 
-                var nome = document.QuerySelector("h1")?.TextContent?.Trim() ?? "Nome não disponível";
+                string GetMeta(string propertyName) => document.QuerySelector($"meta[property='{propertyName}']")?.GetAttribute("content")?.Trim() ?? "";                                
 
-                var precoTexto = document.QuerySelector(".preco")?.TextContent?.Trim();
-                decimal? preco = decimal.TryParse(precoTexto?.Replace("R$", "").Replace(".", "").Replace(",", "."), out var valor) ? valor : null;
-
-                var areaTexto = document.QuerySelector(".area")?.TextContent?.Trim();
-                int areaPrivativa = int.TryParse(areaTexto?.Replace("m²", "").Trim(), out var area) ? area : 0;
-
-                // Monta o endereço (os seletores podem ser ajustados conforme o HTML real)
                 var endereco = new Endereco(
                     tipo: TipoEndereco.Logradouro,
-                    logradouro: document.QuerySelector(".rua")?.TextContent?.Trim() ?? "",
-                    //numero: document.QuerySelector(".numero")?.TextContent?.Trim() ?? "",
-                    cidade: document.QuerySelector(".cidade")?.TextContent?.Trim() ?? "",
-                    //estado: document.QuerySelector(".estado")?.TextContent?.Trim() ?? "",
+                    logradouro: GetMeta("og:street_address"),
+                    cidade: GetMeta("og:locality"),
+                    bairro: GetMeta("og:region"),
                     cep: document.QuerySelector(".cep")?.TextContent?.Trim() ?? ""
                 );
 
@@ -92,20 +103,21 @@ namespace BoraMorar.Moradias.Crawlers
                     .Select(li => li.TextContent.Trim())
                     .ToList();
 
+                var descricao = GetMeta("og:description");
+                var bookHref = document.QuerySelector(".btnDownloadBook a")?.GetAttribute("href");
                 return new CrawledProperty
                 {
-                    Nome = nome,
-                    Preco = preco,
-                    AreaPrivativa = areaPrivativa,
+                    CrawledAt = DateTime.Now,
+                    Nome = GetMeta("og:title"),
+                    AreaPrivativa = ExtrairArea(descricao, document),
                     Endereco = endereco,
-                    Quartos = ExtrairNumero(document, ".quartos"),
-                    Banheiros = ExtrairNumero(document, ".banheiros"),
-                    VagasGaragem = ExtrairNumero(document, ".vagas"),
+                    Quartos = ExtrairQuartos(descricao, document),
+                    Banheiros = ExtrairVagas(descricao, document),
+                    VagasGaragem = ExtrairVagas(descricao, document),
                     Caracteristicas = caracteristicas,
-                    PaginaUrl = url,
-                    BookUrl = document.QuerySelector(".book")?.GetAttribute("href") ?? "",
+                    PaginaUrl = GetMeta("og:url"),
+                    BookUrl = $"{BaseUrl}{bookHref}",
                     Incorporadora = Incorporadora.CyrelaGoldsztein,
-                    CrawledAt = DateTime.Now
                 };
             }
             catch
@@ -132,10 +144,10 @@ namespace BoraMorar.Moradias.Crawlers
         /// <summary>
         /// Extrai um número inteiro de um seletor, retornando 0 se não for possível converter.
         /// </summary>
-        private int ExtrairNumero(IDocument document, string seletor)
+        private int? ExtrairNumero(IDocument document, string seletor)
         {
             var texto = document.QuerySelector(seletor)?.TextContent?.Trim();
-            return int.TryParse(texto, out var numero) ? numero : 0;
+            return int.TryParse(texto, out var numero) ? numero : null;
         }
     }
 }
