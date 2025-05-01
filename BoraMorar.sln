@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorarMorar.Moradias.Applica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorarMorar.Moradias.Functions", "BorarMorar.Moradias.Functions\BorarMorar.Moradias.Functions.csproj", "{4A061790-0C1E-A6EE-BE5C-814B1C8B316B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoraMorar.Moradias.Crawlers", "BoraMorar.Moradias.Crawlers\BoraMorar.Moradias.Crawlers.csproj", "{FA33875E-0D18-46F2-8B4F-A7DD0FBD49F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{4A061790-0C1E-A6EE-BE5C-814B1C8B316B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A061790-0C1E-A6EE-BE5C-814B1C8B316B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A061790-0C1E-A6EE-BE5C-814B1C8B316B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA33875E-0D18-46F2-8B4F-A7DD0FBD49F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA33875E-0D18-46F2-8B4F-A7DD0FBD49F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA33875E-0D18-46F2-8B4F-A7DD0FBD49F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA33875E-0D18-46F2-8B4F-A7DD0FBD49F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

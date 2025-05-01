@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\BoraMorar.Moradias.Crawlers\BoraMorar.Moradias.Crawlers.csproj" />
 	  <ProjectReference Include="..\BoraMorar\BoraMorar.csproj" />
 	  <ProjectReference Include="..\BorarMorar.Infrastructure\BorarMorar.Infrastructure.csproj" />
 	</ItemGroup>
