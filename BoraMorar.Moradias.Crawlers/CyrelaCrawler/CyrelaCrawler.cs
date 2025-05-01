@@ -10,7 +10,7 @@ namespace BoraMorar.Moradias.Crawlers
     /// </summary>
     public class CyrelaCrawler : ICyrelaCrawler
     {
-        const string BaseUrl = "https://www.cyrela.com.br/";
+        const string BaseUrl = "https://www.cyrela.com.br";
         const string PropertiesUrl = "https://www.cyrela.com.br/empreendimentos?field_cidade=218";
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace BoraMorar.Moradias.Crawlers
                     VagasGaragem = ExtrairVagas(descricao, document),
                     Caracteristicas = caracteristicas,
                     PaginaUrl = GetMeta("og:url"),
-                    BookUrl = $"{BaseUrl}{bookHref}",
+                    BookUrl = bookHref == null ? null : $"{BaseUrl}{bookHref}",
                     Incorporadora = Incorporadora.CyrelaGoldsztein,
                 };
             }
