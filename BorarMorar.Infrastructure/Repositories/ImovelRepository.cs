@@ -17,7 +17,7 @@ public class ImovelRepository(BoraMorarDbContext dbContext) : IImovelRepository
         dbContext.AddRange(imoveis);
     }
 
-    public async Task<Imovel?> FindAsync(int id)
+    public async Task<Imovel?> FindAsync(long id)
     {
         return await dbContext.FindAsync<Imovel>(id);
     }
