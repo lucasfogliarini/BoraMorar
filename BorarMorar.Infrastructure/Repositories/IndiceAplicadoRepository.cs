@@ -12,6 +12,11 @@ public class IndiceAplicadoRepository(BoraMorarDbContext dbContext) : IIndiceApl
         dbContext.Add(indice);
     }
 
+    public void AddRange(IEnumerable<IndiceAplicado> indices)
+    {
+        dbContext.AddRange(indices);
+    }
+
     public async Task<IndiceAplicado?> FindAsync(int id)
     {
         return await dbContext.FindAsync<IndiceAplicado>(id);
