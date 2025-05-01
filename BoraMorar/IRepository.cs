@@ -1,12 +1,15 @@
-﻿namespace BoraMorar
+﻿using CSharpFunctionalExtensions;
+
+namespace BoraMorar
 {
     public interface IRepository
     {
         ICommitScope CommitScope { get; }
     }
-    public interface IAddRepository<T> : IRepository
+    public interface IAddRepository<TEntity> : IRepository
     {
-        void Add(T entity);
+        void Add(TEntity entity);
+        void AddRange(IEnumerable<TEntity> entities);
     }
 
     public interface ICommitScope
