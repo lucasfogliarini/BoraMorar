@@ -66,6 +66,7 @@ export function handleSummary(data) {
     const testRunDurationSec = (data.state.testRunDurationMs / 1000);
     const rateSec = data.metrics.http_reqs.values.rate;
     const rateMin = rateSec * 60;
+    const vusAvgAprox = (data.metrics.vus.values.min + data.metrics.vus.values.max) / 2;
     return {
         stdout: `
 ======== 📊 Resumo do teste usando ${executor} ========
@@ -86,9 +87,10 @@ ${reset}
    - Mínimo: ${data.metrics.http_req_duration.values.min.toFixed(2)} ms
    - Mediana: ${data.metrics.http_req_duration.values.med.toFixed(2)} ms
 
-👥 Usuários Virtuais | Virtual Users (λ⋅R):
-   - vus:     ${data.metrics.vus.values.value}
-   - vus_max: ${data.metrics.vus_max.values.max}
+👥 Usuários Virtuais por segundo | Virtual Users (λ⋅R):
+   - Médio: ${vusAvgAprox}
+   - Máximo: ${data.metrics.vus_max.values.max}
+   - Mínmo: ${data.metrics.vus_max.values.min}
 
 🔁 Iterações concluídas: ${data.metrics.iterations.values.count}
 
