@@ -1,5 +1,4 @@
-﻿using BoraMorar;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace BoraMorar.Infrastructure.DomainEvents;
