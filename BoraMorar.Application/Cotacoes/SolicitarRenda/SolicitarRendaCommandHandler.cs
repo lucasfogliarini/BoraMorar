@@ -13,7 +13,7 @@ public class SolicitarRendaCommandHandler(ICotacaoRepository repository) : IComm
             .Tap(c =>
             {
                 c.SolicitarRenda(command.CorretorId);
-                repository.CommitScope.Commit();
+                repository.CommitScope.Commit(cancellationToken);
             })
             .MapTry(c => new SolicitarRendaResponse(c.Id, c.Status, c.DataRendaSolicitada));
     }
