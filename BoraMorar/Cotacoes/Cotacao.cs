@@ -9,6 +9,7 @@ namespace BoraMorar
         public CotacaoStatus Status { get; private set; }
         public string Numero { get; private set; }
 
+        public DateTime DataCotacaoSolicitada { get; private set; }
         public TipoDoBem TipoDoBem { get; private set; }
         public decimal Preco { get; private set; }
         public int ClienteId { get; private set; }
