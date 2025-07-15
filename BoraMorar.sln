@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BorarMorar.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoraMorar.Application", "BoraMorar.Application\BoraMorar.Application.csproj", "{A40EF034-A7DA-476E-983F-E9A362B298C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoraMorar.Functions", "BoraMorar.Functions\BoraMorar.Functions.csproj", "{F56CB451-3A86-44E3-A644-BB89CB6D7ED9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A40EF034-A7DA-476E-983F-E9A362B298C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A40EF034-A7DA-476E-983F-E9A362B298C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A40EF034-A7DA-476E-983F-E9A362B298C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56CB451-3A86-44E3-A644-BB89CB6D7ED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56CB451-3A86-44E3-A644-BB89CB6D7ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56CB451-3A86-44E3-A644-BB89CB6D7ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56CB451-3A86-44E3-A644-BB89CB6D7ED9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
