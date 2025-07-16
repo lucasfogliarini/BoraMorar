@@ -1,13 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using OpenTelemetry.Trace;
+﻿using BoraMorar.Cotacoes.Repository;
+using BoraMorar.Imoveis.Repository;
+using BoraMorar.Infrastructure;
+using BoraMorar.Infrastructure.DomainEvents;
+using BoraMorar.Infrastructure.Repositories;
+using BoraMorar.Propostas.Repository;
+using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
-using BoraMorar.Imoveis.Repository;
-using BoraMorar.Infrastructure.Repositories;
-using BoraMorar.Infrastructure;
-using BoraMorar.Cotacoes.Repository;
+using OpenTelemetry.Trace;
+using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -23,9 +25,11 @@ public static class DependencyInjection
     {
         services.AddScoped<IImovelRepository, ImovelRepository>();
         services.AddScoped<ICotacaoRepository, CotacaoRepository>();
+        services.AddScoped<IPropostaRepository, PropostaRepository>();
     }
     private static void AddDbContext(this IServiceCollection services)
     {
+        services.AddScoped<DomainEventsDispatcher>();
         services.AddDbContext<BoraMorarDbContext>(options => options.UseInMemoryDatabase(nameof(BoraMorarDbContext)));
     }
 

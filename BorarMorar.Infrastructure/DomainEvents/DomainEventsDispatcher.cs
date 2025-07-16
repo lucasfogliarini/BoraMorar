@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace BoraMorar.Infrastructure.DomainEvents;
 
-public class DomainEventsDispatcher(IServiceProvider serviceProvider)
+internal class DomainEventsDispatcher(IServiceProvider serviceProvider)
 {
     public async Task DispatchAsync(IEnumerable<IDomainEvent> events, CancellationToken cancellationToken = default)
     {
