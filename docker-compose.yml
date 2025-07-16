@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      # Habilita o modo KRaft (sem ZooKeeper)
+      KAFKA_KRAFT_MODE: "true"
+      KAFKA_CFG_NODE_ID: "1"
+      KAFKA_CFG_PROCESS_ROLES: "broker,controller"
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+      KAFKA_CFG_LISTENERS: "PLAINTEXT://:9092,CONTROLLER://:9093"
+      KAFKA_CFG_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092"
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    volumes:
+      - kafka_data:/bitnami/kafka
+
+  webapi:
+    build:
+      context: .
+      dockerfile: BoraMorar.WebApi/Dockerfile
+    container_name: BoraMorar.WebApi
+    ports:
+      - "1000:1000"  # HTTP
+      #- "1001:1001"  # HTTPS
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      #ASPNETCORE_URLS: "http://+:1000;https://+:1001"
+      ASPNETCORE_URLS: "http://+:1000;"
+
+  consumers:
+    build: 
+      context: .
+      dockerfile: BoraMorar.Functions/Dockerfile
+    container_name: BoraMorar.Functions
+    ports:
+      - '1002:1002'
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      AzureWebJobsStorage: "UseDevelopmentStorage=true"
+      FUNCTIONS_WORKER_RUNTIME: "dotnet-isolated"
+      BrokerList: "kafka:9092"
+    depends_on:
+      - kafka
+    networks:
+      - kafka-net
+
+networks:
+  kafka-net:
+    driver: bridge
+
+volumes:
+  kafka_data:
