@@ -2,7 +2,7 @@
   "profiles": {
     "BoraMorar.Functions": {
       "commandName": "Project",
-      "commandLineArgs": "--port 1000",
+      "commandLineArgs": "--port 1001",
       "launchBrowser": false
     }
   }

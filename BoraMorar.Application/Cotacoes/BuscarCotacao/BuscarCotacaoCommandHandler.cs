@@ -15,6 +15,6 @@ public class BuscarCotacaoCommandHandler(ICotacaoRepository repository) : IQuery
     }
 }
 
-public record BuscarCotacaoQuery(int Id, decimal TaxaJuros, int PrazoMaximo) : IQuery<BuscarCotacaoResponse>;
+public record BuscarCotacaoQuery(int Id) : IQuery<BuscarCotacaoResponse>;
 
 public record BuscarCotacaoResponse(int Id, string Numero, DateTime DataCotacaoSolicitada);
