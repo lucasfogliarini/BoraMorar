@@ -3,7 +3,7 @@ using BoraMorar.Indices.Repository;
 
 namespace BoraMorar.Infrastructure.Repositories;
 
-public class IndiceAplicadoRepository(BoraMorarDbContext dbContext) : IIndiceAplicadoRepository
+internal class IndiceAplicadoRepository(BoraMorarDbContext dbContext) : IIndiceAplicadoRepository
 {
     public ICommitScope CommitScope => dbContext;
 

@@ -3,7 +3,7 @@ using BoraMorar.Imoveis.Repository;
 
 namespace BoraMorar.Infrastructure.Repositories;
 
-public class ImovelRepository(BoraMorarDbContext dbContext) : IImovelRepository
+internal class ImovelRepository(BoraMorarDbContext dbContext) : IImovelRepository
 {
     public ICommitScope CommitScope => dbContext;
 

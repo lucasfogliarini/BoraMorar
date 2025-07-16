@@ -2,7 +2,7 @@
 
 namespace BoraMorar.Infrastructure.Repositories;
 
-public class CotacaoRepository(BoraMorarDbContext boraCotacoesDbContext) : ICotacaoRepository
+internal class CotacaoRepository(BoraMorarDbContext boraCotacoesDbContext) : ICotacaoRepository
 {
     public ICommitScope CommitScope => boraCotacoesDbContext;
 
