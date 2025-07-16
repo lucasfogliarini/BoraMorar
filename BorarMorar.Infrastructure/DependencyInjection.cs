@@ -7,6 +7,7 @@ using OpenTelemetry.Resources;
 using BoraMorar.Imoveis.Repository;
 using BoraMorar.Infrastructure.Repositories;
 using BoraMorar.Infrastructure;
+using BoraMorar.Cotacoes.Repository;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,7 @@ public static class DependencyInjection
     private static void AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IImovelRepository, ImovelRepository>();
+        services.AddScoped<ICotacaoRepository, CotacaoRepository>();
     }
     private static void AddDbContext(this IServiceCollection services)
     {
