@@ -20,6 +20,7 @@ public static class DependencyInjection
         services.AddDbContext();
         services.AddRepositories();
         services.AddOpenTelemetryExporter();
+        services.AddScoped<IProducer>(provider => new KafkaProducer("kafka:9092"));
     }
     private static void AddRepositories(this IServiceCollection services)
     {
