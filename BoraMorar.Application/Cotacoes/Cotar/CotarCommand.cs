@@ -2,4 +2,10 @@
 
 namespace BoraMorar.Application.Cotacoes.Cotar;
 
-public record CotarCommand(int ClienteId, TipoDoBem TipoDoBem, decimal Preco) : ICommand<CotarResponse>;
+public class CotarCommand : ICommand<CotarResponse>
+{
+    public int ClienteId { get; init; }
+    public TipoDoBem TipoDoBem { get; init; }
+    public decimal Preco { get; init; }
+}
+
