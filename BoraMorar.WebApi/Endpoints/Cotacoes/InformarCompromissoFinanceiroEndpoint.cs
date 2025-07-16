@@ -8,8 +8,8 @@ namespace BoraMorar.WebApi;
 [Route(Routes.Cotacoes)]
 public class InformarCompromissoFinanceiroEndpoint(ICommandHandler<InformarCompromissoFinanceiroCommand, InformarCompromissoFinanceiroResponse> commandHandler) : ControllerBase
 {
-    [HttpPost("{id}/InformarCompromissoFinanceiro")]
-    public async Task<IActionResult> SolicitarRenda(InformarCompromissoFinanceiroCommand command, CancellationToken cancellationToken = default)
+    [HttpPost(nameof(InformarCompromissoFinanceiro))]
+    public async Task<IActionResult> InformarCompromissoFinanceiro(InformarCompromissoFinanceiroCommand command, CancellationToken cancellationToken = default)
     {
         var result = await commandHandler.Handle(command, cancellationToken);
         if (result.IsFailure)
