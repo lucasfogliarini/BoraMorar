@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace BoraMorar.Infrastructure;
 
-public class BoraMorarDbContext(DbContextOptions options, DomainEventsDispatcher domainEventsDispatcher) : DbContext(options), ICommitScope
+internal class BoraMorarDbContext(DbContextOptions options, DomainEventsDispatcher domainEventsDispatcher) : DbContext(options), ICommitScope
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
