@@ -3,14 +3,16 @@
 namespace BoraMorar.Application;
 
 /// <summary>
-/// Representa um comando que expressa uma intenção de ação no domínio, sem retorno.
-/// Cor no EventStorming: <b>Azul</b> (Command).
+/// Representa um comando que expressa uma intenção de executar uma ação no domínio, geralmente iniciada por um ator (usuário ou sistema).
+/// Este comando não espera um retorno
+/// Cor no EventStorming: <b>Azul</b>.
 /// </summary>
 public interface ICommand;
 
 /// <summary>
-/// Representa um comando que expressa uma intenção de ação no domínio e espera uma resposta.
-/// Cor no EventStorming: <b>Azul</b> (Command).
+/// Representa um comando que expressa uma intenção de executar uma ação no domínio, geralmente iniciada por um ator (usuário ou sistema).
+/// Este comando espera uma resposta tipada após sua execução.
+/// Cor no EventStorming: <b>Azul</b>.
 /// </summary>
 public interface ICommand<TResponse>;
 

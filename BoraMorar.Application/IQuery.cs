@@ -3,8 +3,10 @@
 namespace BoraMorar.Application;
 
 /// <summary>
-/// Representa uma consulta ao sistema que retorna uma resposta.
-/// Cor no EventStorming: <b>Verde</b> (Read Model / Query).
+/// Representa uma consulta (query) que solicita dados do domínio sem causar efeitos colaterais.
+/// Utilizada para leitura, projeção ou apresentação de informações.
+/// Pode ser mapeada a um <b>Read Model</b> no EventStorming, o qual representa uma projeção otimizada para leitura.
+/// Cor no EventStorming: <b>Verde</b>.
 /// </summary>
 public interface IQuery<TResponse>;
 
