@@ -84,7 +84,7 @@ namespace BoraMorar
         {
             Status = newStatus;
             UpdatedNow();
-            AddDomainEvent(new CotacaoStatusChangedDomainEvent(Id, Status, UpdatedAt));
+            AddDomainEvent(new CotacaoStatusChangedDomainEvent(Id, Status));
         }
 
         /// <summary>

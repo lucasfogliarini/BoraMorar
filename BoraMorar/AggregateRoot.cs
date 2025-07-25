@@ -2,6 +2,11 @@
 
 namespace BoraMorar
 {
+    /// <summary>
+    /// Representa a raiz de um agregado, sendo a única entrada para modificar o estado interno do agregado.
+    /// É responsável por garantir as invariantes do domínio.
+    /// Cor no EventStorming: <b>Roxo</b>.
+    /// </summary>
     public abstract class AggregateRoot : Entity<int>
     {
         public DateTime CreatedAt { get; private set; }
