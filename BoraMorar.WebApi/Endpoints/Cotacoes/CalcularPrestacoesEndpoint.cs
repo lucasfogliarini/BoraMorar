@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class CalcularPrestacoesEndpoint(ICommandHandler<CalcularPrestacoesCommand, CalcularPrestacoesResponse> commandHandler) : ControllerBase
 {
     [HttpPost(nameof(CalcularPrestacoes))]

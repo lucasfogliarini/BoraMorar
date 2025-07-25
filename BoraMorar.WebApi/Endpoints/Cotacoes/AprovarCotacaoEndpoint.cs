@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class AprovarCotacaoEndpoint(ICommandHandler<AprovarCotacaoCommand, AprovarCotacaoResponse> commandHandler) : ControllerBase
 {
     [HttpPost("AprovarCotacao")]

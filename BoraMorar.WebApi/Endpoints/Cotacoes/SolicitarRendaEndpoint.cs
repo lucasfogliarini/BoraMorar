@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class SolicitarRendaEndpoint(ICommandHandler<SolicitarRendaCommand, SolicitarRendaResponse> commandHandler) : ControllerBase
 {
     [HttpPost(nameof(SolicitarRenda))]

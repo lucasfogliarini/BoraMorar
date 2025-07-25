@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class InformarCompromissoFinanceiroEndpoint(ICommandHandler<InformarCompromissoFinanceiroCommand, InformarCompromissoFinanceiroResponse> commandHandler) : ControllerBase
 {
     [HttpPost(nameof(InformarCompromissoFinanceiro))]

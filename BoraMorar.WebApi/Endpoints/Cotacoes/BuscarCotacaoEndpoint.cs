@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class BuscarCotacaoEndpoint(IQueryHandler<BuscarCotacaoQuery, BuscarCotacaoResponse> queryHandler) : ControllerBase
 {
     [HttpGet("{id}")]

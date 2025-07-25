@@ -6,6 +6,7 @@ namespace BoraMorar.WebApi;
 
 [ApiController]
 [Route(Routes.Cotacoes)]
+[Tags(Routes.Cotacoes)]
 public class CotarEndpoint(ICommandHandler<CotarCommand, CotarResponse> commandHandler) : ControllerBase
 {
     [HttpPost("Cotar")]
