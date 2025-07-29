@@ -1,21 +1,41 @@
 using BoraMorar.Application;
 using BoraMorar.Application.Cotacoes.AprovarCotacao;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BoraMorar.WebApi;
 
-[ApiController]
-[Route(Routes.Cotacoes)]
-[Tags(Routes.Cotacoes)]
-public class AprovarCotacaoEndpoint(ICommandHandler<AprovarCotacaoCommand, AprovarCotacaoResponse> commandHandler) : ControllerBase
+internal sealed class AprovarCotacaoEndpoint : IEndpoint
 {
-    [HttpPost("AprovarCotacao")]
-    public async Task<IActionResult> AprovarCotacao(AprovarCotacaoCommand command, CancellationToken cancellationToken = default)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        var result = await commandHandler.Handle(command, cancellationToken);
-        if (result.IsFailure)
-            return BadRequest(result.Error);
+        app.MapPost($"{Routes.Cotacoes}/AprovarCotacao", async (
+            AprovarCotacaoCommand command,
+            ICommandHandler<AprovarCotacaoCommand, AprovarCotacaoResponse> commandHandler,
+            CancellationToken cancellationToken) =>
+        {
+            var result = await commandHandler.Handle(command, cancellationToken);
+            if (result.IsFailure)
+                return Results.BadRequest(result.Error);
 
-        return Ok(result.Value);
+            return Results.Ok(result.Value);
+        })
+        .WithTags(Routes.Cotacoes);
     }
 }
+
+//[ApiController]
+//[Route(Routes.Cotacoes)]
+//[Tags(Routes.Cotacoes)]
+//public class AprovarCotacaoControlerEndpoint(ICommandHandler<AprovarCotacaoCommand, AprovarCotacaoResponse> commandHandler) : ControllerBase
+//{
+//    [HttpPost("AprovarCotacao")]
+//    public async Task<IActionResult> AprovarCotacao(AprovarCotacaoCommand command, CancellationToken cancellationToken = default)
+//    {
+//        var result = await commandHandler.Handle(command, cancellationToken);
+//        if (result.IsFailure)
+//            return BadRequest(result.Error);
+
+//        return Ok(result.Value);
+//    }
+//}
+
+

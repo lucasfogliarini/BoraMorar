@@ -1,21 +1,40 @@
 using BoraMorar.Application;
 using BoraMorar.Application.Cotacoes.SolicitarRenda;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BoraMorar.WebApi;
 
-[ApiController]
-[Route(Routes.Cotacoes)]
-[Tags(Routes.Cotacoes)]
-public class SolicitarRendaEndpoint(ICommandHandler<SolicitarRendaCommand, SolicitarRendaResponse> commandHandler) : ControllerBase
+internal sealed class SolicitarRendaEndpoint : IEndpoint
 {
-    [HttpPost(nameof(SolicitarRenda))]
-    public async Task<IActionResult> SolicitarRenda(SolicitarRendaCommand command, CancellationToken cancellationToken = default)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        var result = await commandHandler.Handle(command, cancellationToken);
-        if (result.IsFailure)
-            return BadRequest(result.Error);
+        app.MapPost($"{Routes.Cotacoes}/SolicitarRenda", async (
+            SolicitarRendaCommand command,
+            ICommandHandler<SolicitarRendaCommand, SolicitarRendaResponse> commandHandler,
+            CancellationToken cancellationToken) =>
+        {
+            var result = await commandHandler.Handle(command, cancellationToken);
+            if (result.IsFailure)
+                return Results.BadRequest(result.Error);
 
-        return Ok(result.Value);
+            return Results.Ok(result.Value);
+        })
+        .WithTags(Routes.Cotacoes);
     }
 }
+
+
+//[ApiController]
+//[Route(Routes.Cotacoes)]
+//[Tags(Routes.Cotacoes)]
+//public class SolicitarRendaControllerEndpoint(ICommandHandler<SolicitarRendaCommand, SolicitarRendaResponse> commandHandler) : ControllerBase
+//{
+//    [HttpPost(nameof(SolicitarRenda))]
+//    public async Task<IActionResult> SolicitarRenda(SolicitarRendaCommand command, CancellationToken cancellationToken = default)
+//    {
+//        var result = await commandHandler.Handle(command, cancellationToken);
+//        if (result.IsFailure)
+//            return BadRequest(result.Error);
+
+//        return Ok(result.Value);
+//    }
+//}

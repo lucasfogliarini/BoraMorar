@@ -1,21 +1,40 @@
 using BoraMorar.Application;
 using BoraMorar.Application.Cotacoes.CalcularPrestacoes;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BoraMorar.WebApi;
 
-[ApiController]
-[Route(Routes.Cotacoes)]
-[Tags(Routes.Cotacoes)]
-public class CalcularPrestacoesEndpoint(ICommandHandler<CalcularPrestacoesCommand, CalcularPrestacoesResponse> commandHandler) : ControllerBase
+internal sealed class CalcularPrestacoesEndpoint : IEndpoint
 {
-    [HttpPost(nameof(CalcularPrestacoes))]
-    public async Task<IActionResult> CalcularPrestacoes(CalcularPrestacoesCommand command, CancellationToken cancellationToken = default)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        var result = await commandHandler.Handle(command, cancellationToken);
-        if (result.IsFailure)
-            return BadRequest(result.Error);
+        app.MapPost($"{Routes.Cotacoes}/CalcularPrestacoes", async (
+            CalcularPrestacoesCommand command,
+            ICommandHandler<CalcularPrestacoesCommand, CalcularPrestacoesResponse> commandHandler,
+            CancellationToken cancellationToken) =>
+        {
+            var result = await commandHandler.Handle(command, cancellationToken);
+            if (result.IsFailure)
+                return Results.BadRequest(result.Error);
 
-        return Ok(result.Value);
+            return Results.Ok(result.Value);
+        })
+        .WithTags(Routes.Cotacoes);
     }
 }
+
+
+//[ApiController]
+//[Route(Routes.Cotacoes)]
+//[Tags(Routes.Cotacoes)]
+//public class CalcularPrestacoesControllerEndpoint(ICommandHandler<CalcularPrestacoesCommand, CalcularPrestacoesResponse> commandHandler) : ControllerBase
+//{
+//    [HttpPost(nameof(CalcularPrestacoes))]
+//    public async Task<IActionResult> CalcularPrestacoes(CalcularPrestacoesCommand command, CancellationToken cancellationToken = default)
+//    {
+//        var result = await commandHandler.Handle(command, cancellationToken);
+//        if (result.IsFailure)
+//            return BadRequest(result.Error);
+
+//        return Ok(result.Value);
+//    }
+//}

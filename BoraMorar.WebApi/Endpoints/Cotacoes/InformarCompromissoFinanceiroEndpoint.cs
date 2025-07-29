@@ -1,21 +1,40 @@
 using BoraMorar.Application;
 using BoraMorar.Application.Cotacoes.InformarCompromissoFinanceiro;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BoraMorar.WebApi;
 
-[ApiController]
-[Route(Routes.Cotacoes)]
-[Tags(Routes.Cotacoes)]
-public class InformarCompromissoFinanceiroEndpoint(ICommandHandler<InformarCompromissoFinanceiroCommand, InformarCompromissoFinanceiroResponse> commandHandler) : ControllerBase
+internal sealed class InformarCompromissoFinanceiroEndpoint : IEndpoint
 {
-    [HttpPost(nameof(InformarCompromissoFinanceiro))]
-    public async Task<IActionResult> InformarCompromissoFinanceiro(InformarCompromissoFinanceiroCommand command, CancellationToken cancellationToken = default)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        var result = await commandHandler.Handle(command, cancellationToken);
-        if (result.IsFailure)
-            return BadRequest(result.Error);
+        app.MapPost($"{Routes.Cotacoes}/InformarCompromissoFinanceiro", async (
+            InformarCompromissoFinanceiroCommand command,
+            ICommandHandler<InformarCompromissoFinanceiroCommand, InformarCompromissoFinanceiroResponse> commandHandler,
+            CancellationToken cancellationToken) =>
+        {
+            var result = await commandHandler.Handle(command, cancellationToken);
+            if (result.IsFailure)
+                return Results.BadRequest(result.Error);
 
-        return Ok(result.Value);
+            return Results.Created("", result.Value);
+        })
+        .WithTags(Routes.Cotacoes);
     }
 }
+
+
+//[ApiController]
+//[Route(Routes.Cotacoes)]
+//[Tags(Routes.Cotacoes)]
+//public class InformarCompromissoFinanceiroControllerEndpoint(ICommandHandler<InformarCompromissoFinanceiroCommand, InformarCompromissoFinanceiroResponse> commandHandler) : ControllerBase
+//{
+//    [HttpPost(nameof(InformarCompromissoFinanceiro))]
+//    public async Task<IActionResult> InformarCompromissoFinanceiro(InformarCompromissoFinanceiroCommand command, CancellationToken cancellationToken = default)
+//    {
+//        var result = await commandHandler.Handle(command, cancellationToken);
+//        if (result.IsFailure)
+//            return BadRequest(result.Error);
+
+//        return Ok(result.Value);
+//    }
+//}

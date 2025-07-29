@@ -8,6 +8,8 @@ public class BuscarCotacaoCommandHandler(ICotacaoRepository repository) : IQuery
 {
     public async Task<Result<BuscarCotacaoResponse>> Handle(BuscarCotacaoQuery query, CancellationToken cancellationToken = default)
     {
+        await Task.Delay(2000, cancellationToken);
+
         return await Result
             .Try(() => repository.FindAsync(query.Id))
             .EnsureNotNull("Cotação não encontrada.")

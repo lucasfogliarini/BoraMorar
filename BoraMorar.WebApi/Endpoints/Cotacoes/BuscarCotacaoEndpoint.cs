@@ -1,21 +1,40 @@
 using BoraMorar.Application;
 using BoraMorar.Application.Cotacoes.BuscarCotacao;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BoraMorar.WebApi;
 
-[ApiController]
-[Route(Routes.Cotacoes)]
-[Tags(Routes.Cotacoes)]
-public class BuscarCotacaoEndpoint(IQueryHandler<BuscarCotacaoQuery, BuscarCotacaoResponse> queryHandler) : ControllerBase
+internal sealed class BuscarCotacaoEndpoint : IEndpoint
 {
-    [HttpGet("{id}")]
-    public async Task<IActionResult> Buscar(int id, CancellationToken cancellationToken)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        var result = await queryHandler.Handle(new BuscarCotacaoQuery(id), cancellationToken);
-        if (result.IsFailure)
-            return NotFound(result.Error);
+        app.MapGet($"{Routes.Cotacoes}/{{id}}", async (
+            int id,
+            IQueryHandler<BuscarCotacaoQuery, BuscarCotacaoResponse> queryHandler,
+            CancellationToken cancellationToken) =>
+        {
+            var result = await queryHandler.Handle(new BuscarCotacaoQuery(id), cancellationToken);
+            if (result.IsFailure)
+                return Results.NotFound(result.Error);
 
-        return Ok(result.Value);
+            return Results.Ok(result.Value);
+        })
+        .WithTags(Routes.Cotacoes)
+        .CacheOutput();
     }
 }
+
+//[ApiController]
+//[Route(Routes.Cotacoes)]
+//[Tags(Routes.Cotacoes)]
+//public class BuscarCotacaoControllerEndpoint(IQueryHandler<BuscarCotacaoQuery, BuscarCotacaoResponse> queryHandler) : ControllerBase
+//{
+//    [HttpGet("{id}")]
+//    public async Task<IActionResult> Buscar(int id, CancellationToken cancellationToken)
+//    {
+//        var result = await queryHandler.Handle(new BuscarCotacaoQuery(id), cancellationToken);
+//        if (result.IsFailure)
+//            return NotFound(result.Error);
+
+//        return Ok(result.Value);
+//    }
+//}
