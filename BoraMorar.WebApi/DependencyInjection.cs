@@ -9,16 +9,11 @@ public static class DependencyInjection
     {
         builder.Services.AddEndpoints();
         builder.Services.AddProblemDetails();
-        builder.Services.AddOutputCache(options =>
-        {
-            options.AddBasePolicy(policy => policy.Expire(TimeSpan.FromSeconds(5)));
-            options.AddPolicy("30", policy => policy.Expire(TimeSpan.FromSeconds(30)));
-        });
+        builder.AddOutputCache();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.AddAll();
     }
-
     public static void UseWebApi(this WebApplication app)
     {
         app.UseOutputCache();//precisa ser antes do MapEndpoints
@@ -68,7 +63,6 @@ public static class DependencyInjection
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
     }
-
     /// <summary>
     /// Esse método usa os middlewares mais importantes do ASP.NET Core, como logging, autorização e controllers.
     /// </summary>
