@@ -7,12 +7,3 @@ O Bora Morar nasce com a convicção de que morar bem não é apenas adquirir um
 Dentro dessa visão, existe o interesse em **avaliar um orçamento e possíveis soluções junto ao Banco Carrefour**, considerando sua atuação no mercado financeiro e a oportunidade de apoiar iniciativas que promovam educação, planejamento e acesso consciente à moradia.
 
 O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
-
-# Tecnologias
-
-- Virtudes
-- Virtudes dos Gregos
-- Virtudes da Hebreus
-
-[IcePanel](https://s.icepanel.io/5EJNqZk1BJKyQN/T4RR/landscape/overview)
-[ChatGpt](https://chatgpt.com/g/g-p-6945839657dc8191b3e75db0d88d0f84-bora/project)
