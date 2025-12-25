@@ -1,9 +1,18 @@
-# Bora Morar
+O **Bora Morar** é uma iniciativa criada para simplificar e orientar decisões relacionadas à moradia, conectando informação, pessoas e soluções de forma prática, transparente e estruturada.
 
-## Análise técnica
-  Analise tecnicamente este repositório com o __ChatGPT__, utilizando esta [conversa iniciada](https://chatgpt.com/share/6810f0b5-2324-8013-8e02-bd0972231b25) ou [iniciando uma nova](http://chatgpt.com/?q=Analise%20tecnicamente%20esse%20reposit%C3%B3rio%20github.com/lucasfogliarini/BoraMorar)
+A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, trocar ou planejar um imóvel**, oferecendo clareza sobre opções, processos e impactos financeiros envolvidos em cada escolha. Mais do que tratar apenas de imóveis, o projeto aborda **planejamento financeiro, tomada de decisão consciente e visão de longo prazo**.
 
-## Referências
+O Bora Morar nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
 
-- [Domain-Driven Design: Tackling Complexity in the Heart of Software, Eric Evans, 2003](http://chatgpt.com/?q=Livro%20Domain-Driven%20Design,%20Eric%20Evans)
-- [Projetar um microsserviço orientado a DDD, Learn Microsoft, 09/05/2023](https://learn.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
+Dentro dessa visão, existe o interesse em **avaliar um orçamento e possíveis soluções junto ao Banco Carrefour**, considerando sua atuação no mercado financeiro e a oportunidade de apoiar iniciativas que promovam educação, planejamento e acesso consciente à moradia.
+
+O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
+
+# Tecnologias
+
+- Virtudes
+- Virtudes dos Gregos
+- Virtudes da Hebreus
+
+[IcePanel](https://s.icepanel.io/5EJNqZk1BJKyQN/T4RR/landscape/overview)
+[ChatGpt](https://chatgpt.com/g/g-p-6945839657dc8191b3e75db0d88d0f84-bora/project)
