@@ -1,4 +1,4 @@
-O **Bora Morar habilita a educação financeira e acesso ao crédito para que famílias realizem o sonho da moradia própria, de forma responsável, sustentável e consciente no presente, em harmonia com a natureza, a sociedade e o futuro.
+O **Bora Morar** habilita a educação financeira e acesso ao crédito para que famílias realizem o sonho da moradia própria, de forma responsável, sustentável e consciente no presente, em harmonia com a natureza, a sociedade e o futuro.
 
 A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, trocar ou planejar um imóvel**, oferecendo clareza sobre opções, processos e impactos financeiros envolvidos em cada escolha. Mais do que tratar apenas de imóveis, o projeto aborda **planejamento financeiro, tomada de decisão consciente e visão de longo prazo**.
 
