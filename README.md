@@ -1,9 +1,7 @@
-O **Bora Morar** é uma iniciativa criada para simplificar e orientar decisões relacionadas à moradia, conectando informação, pessoas e soluções de forma prática, transparente e estruturada.
+O **Bora Morar habilita a educação financeira e acesso ao crédito para que famílias realizem o sonho da moradia própria, de forma responsável, sustentável e consciente no presente, em harmonia com a natureza, a sociedade e o futuro.
 
 A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, trocar ou planejar um imóvel**, oferecendo clareza sobre opções, processos e impactos financeiros envolvidos em cada escolha. Mais do que tratar apenas de imóveis, o projeto aborda **planejamento financeiro, tomada de decisão consciente e visão de longo prazo**.
 
-O Bora Morar nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
-
-Dentro dessa visão, existe o interesse em **avaliar um orçamento e possíveis soluções junto ao Banco Carrefour**, considerando sua atuação no mercado financeiro e a oportunidade de apoiar iniciativas que promovam educação, planejamento e acesso consciente à moradia.
+A iniciativa nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
 
 O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
