@@ -11,12 +11,14 @@ builder.Configuration["ASPIRE_ALLOW_UNSECURED_TRANSPORT"] = "true";
 builder.Configuration["ASPIRE_DASHBOARD_OTLP_HTTP_ENDPOINT_URL"] = "http://localhost:5001";
 builder.Configuration["ASPNETCORE_URLS"] = "http://localhost:5000";
 
-var postgresPasswordParam = builder.AddParameter("postgres-password", "BoraMorar!123", secret: false);
+// Add Keycloak Database
+var postgresPasswordParam = builder.AddParameter("postgres-password", "Bora!123", secret: false);
 const string keycloakDatabaseName = "keycloak-database";
 var postgresServer = builder.AddPostgres("postgres", port: 2000)
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("aspire_postgres_data")
-    .WithPassword(postgresPasswordParam);
+    .WithPassword(postgresPasswordParam)
+    .WithPgAdmin();
 var keycloakDatabase = postgresServer.AddDatabase(keycloakDatabaseName);
 
 // Add Keycloak for authentication
@@ -25,7 +27,7 @@ var keycloak = builder.AddKeycloakContainer("keycloak", port: 2001)
     .WaitFor(keycloakDatabase)
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("aspire_keycloak_data")
-    //.WithImport("ledgerflow-realm-export.json")
+    .WithImport("bora-realm-export.json")
     .WithEnvironment("KC_BOOTSTRAP_ADMIN_USERNAME", "admin")
     .WithEnvironment("KC_BOOTSTRAP_ADMIN_PASSWORD", "admin")
 
