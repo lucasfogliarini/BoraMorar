@@ -5,3 +5,6 @@ A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, 
 A iniciativa nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
 
 O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
+
+## [BoraMorar Diagram (share)](https://s.icepanel.io/5EJNqZk1BJKyQN/53CH)
+## [@.bora.earth Landscape (edit)](https://app.icepanel.io/landscapes/v3MTVXKMPjCfg4LaPENe/)
