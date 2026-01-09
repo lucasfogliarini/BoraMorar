@@ -21,23 +21,27 @@ public class DatabaseServer(string Name, int Port) : Service(Name, Port)
 /// <summary>
 /// https://c4model.com/abstractions/software-system
 /// </summary>
-public abstract class SystemC4(string Name, int Port = 2000) : Service(Name, Port)
+public abstract class SystemC4(string Name, IDistributedApplicationBuilder builder, int Port = 2000) : Service(Name, Port)
 {
-    public abstract string Url { get; set; }
+    protected abstract string Url { get; set; }
+    public IDistributedApplicationBuilder Builder { get; set; } = builder;
     public DatabaseServer DatabaseServer { get; private set; } = new DatabaseServer($"{Name.ToLower()}-dbserver", Port + 1);
     public Service MainService { get; set; } = new Service($"{Name.ToLower()}-mainservice", Port + 2);
     public Service ObservabilityService { get; set; } = new Service($"{Name.ToLower()}-observabilityservice", Port + 3);
 
-    protected IResourceBuilder<ExternalServiceResource> AddSystem(IDistributedApplicationBuilder builder)
+    public virtual IResourceBuilder<ExternalServiceResource> AddToResources()
     {
-        return builder.AddExternalService(Name, Url);
+        return Builder.AddExternalService(Name, Url);
     }
-
-    public void AddToAspire(IDistributedApplicationBuilder builder)
+    public ExternalServiceResource? GetSystem(string name)
     {
-        builder.Configuration["ASPIRE_ALLOW_UNSECURED_TRANSPORT"] = "true";
-        builder.Configuration["ASPIRE_DASHBOARD_OTLP_HTTP_ENDPOINT_URL"] = ObservabilityService!.AbsolutePath;
-        builder.Configuration["ASPNETCORE_URLS"] = AbsolutePath;
+        return Builder.Resources.OfType<ExternalServiceResource>().FirstOrDefault(e => e.Name == name);
+    }
+    public void AddToAspire()
+    {
+        Builder.Configuration["ASPIRE_ALLOW_UNSECURED_TRANSPORT"] = "true";
+        Builder.Configuration["ASPIRE_DASHBOARD_OTLP_HTTP_ENDPOINT_URL"] = ObservabilityService!.AbsolutePath;
+        Builder.Configuration["ASPNETCORE_URLS"] = AbsolutePath;
     }
 }
 

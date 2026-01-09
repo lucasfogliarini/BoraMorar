@@ -1,9 +1,9 @@
 public static class BoraMorarSystemBuilderExtensions
 {
-    public static BoraMorarSystem AddBoraMorarSystem(this IDistributedApplicationBuilder builder)
+    public static BoraMorarSystem AddBoraMorarSystem(this KeycloakBoraMorarSystem keycloakBoraMorarSystem)
     {
-        var boraMorarSystem = new BoraMorarSystem();
-        boraMorarSystem.Add(builder);
+        var boraMorarSystem = new BoraMorarSystem(keycloakBoraMorarSystem);
+        boraMorarSystem.AddToResources();
         return boraMorarSystem;
     }
 }

@@ -1,24 +1,26 @@
-public class KeycloakBoraMorarSystem() : SystemC4(SystemName)
+public class KeycloakBoraMorarSystem(IDistributedApplicationBuilder builder) : SystemC4(SystemName, builder)
 {
-    const string SystemName = nameof(KeycloakBoraMorarSystem);
-    public override string Url { get; set; } = "https://bora.earth/work/IdentitySystem/";
+    public const string SystemName = nameof(KeycloakBoraMorarSystem);
     const string PostgresPassword = $"{SystemName}!";
+    public IResourceBuilder<KeycloakResource> KeycloakResource { get; private set; }
+    protected override string Url { get; set; } = "https://bora.earth/work/IdentitySystem/";
+    
 
     IResourceBuilder<ParameterResource>? PostgresPasswordResource;
     const string BoraRealm = "bora";
-    public void Add(IDistributedApplicationBuilder builder)
+    public override IResourceBuilder<ExternalServiceResource> AddToResources()
     {
-        PostgresPasswordResource = builder.AddParameter("postgres-password", PostgresPassword, secret: false);
+        PostgresPasswordResource = Builder.AddParameter("postgres-password", PostgresPassword, secret: false);
 
-        var keycloakPostgresServer = AddKeycloakPostgresServer(builder);
-        var keycloak = AddKeycloakServer(builder, keycloakPostgresServer);
+        var keycloakPostgresServer = AddKeycloakPostgresServer();
+        AddKeycloakServer(keycloakPostgresServer);
 
-        var boraAdmin = builder.AddExternalService($"{BoraRealm}Admin", $"{MainService.AbsolutePath}/admin/{BoraRealm}/console/");
-        var boraAccount = builder.AddExternalService($"{BoraRealm}Account", $"{MainService.AbsolutePath}/realms/{BoraRealm}/account/");
+        var boraAdmin = Builder.AddExternalService($"{BoraRealm}Admin", $"{MainService.AbsolutePath}/admin/{BoraRealm}/console/");
+        var boraAccount = Builder.AddExternalService($"{BoraRealm}Account", $"{MainService.AbsolutePath}/realms/{BoraRealm}/account/");
 
-        AddSystem(builder)
+        return base.AddToResources()
             .WithChildRelationship(keycloakPostgresServer)
-            .WithChildRelationship(keycloak)
+            .WithChildRelationship(KeycloakResource)
             .WithChildRelationship(boraAdmin)
             .WithChildRelationship(boraAccount);
     }
@@ -26,9 +28,9 @@ public class KeycloakBoraMorarSystem() : SystemC4(SystemName)
     /// <summary>
     /// https://www.keycloak.org
     /// </summary>
-    public IResourceBuilder<KeycloakResource> AddKeycloakServer(IDistributedApplicationBuilder builder, IResourceBuilder<PostgresServerResource> keycloakPostgresServer)
+    public void AddKeycloakServer(IResourceBuilder<PostgresServerResource> keycloakPostgresServer)
     {
-        var keycloak = builder.AddKeycloakContainer(MainService.Name, port: MainService.Port)
+        KeycloakResource = Builder.AddKeycloakContainer(MainService.Name, port: MainService.Port)
             .WaitFor(keycloakPostgresServer)
             //.WithLifetime(ContainerLifetime.Persistent)
             .WithDataVolume($"{MainService.Name}_data")
@@ -43,16 +45,14 @@ public class KeycloakBoraMorarSystem() : SystemC4(SystemName)
 
             .WithEnvironment("KC_HEALTH_ENABLED", "true")
             .WithEnvironment("KC_METRICS_ENABLED", "true");
-
-        return keycloak;
     }
 
     /// <summary>
     /// https://www.keycloak.org/server/db
     /// </summary>
-    IResourceBuilder<PostgresServerResource> AddKeycloakPostgresServer(IDistributedApplicationBuilder builder)
+    IResourceBuilder<PostgresServerResource> AddKeycloakPostgresServer()
     {
-        var postgresServer = builder.AddPostgres(DatabaseServer.Name, port: DatabaseServer.Port)
+        var postgresServer = Builder.AddPostgres(DatabaseServer.Name, port: DatabaseServer.Port)
             .WithLifetime(ContainerLifetime.Persistent)
             .WithDataVolume($"{DatabaseServer.Name}_data")
             //.WithPgAdmin()

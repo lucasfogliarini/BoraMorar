@@ -1,8 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var keycloakSystem = builder.AddKeycloakBoraMorarSystem();
-var boraMorarSystem = builder.AddBoraMorarSystem();
-builder.AddToAspire(boraMorarSystem);
+builder.AddKeycloakBoraMorarSystem()
+        .AddBoraMorarSystem()
+        .AddToAspire();
 
 var app = builder.Build();
 

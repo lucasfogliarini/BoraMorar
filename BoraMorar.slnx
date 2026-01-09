@@ -1,8 +1,12 @@
 <Solution>
   <Folder Name="/docs/">
+    <File Path=".gitignore" />
+    <File Path="k6.js" />
+    <File Path="LICENSE.txt" />
     <File Path="README.md" />
   </Folder>
   <Project Path="BoraMorar.Tests/BoraMorar.Tests.csproj" />
+  <Project Path="BoraMorar.WebApi/BoraMorar.WebApi.csproj" />
   <Project Path="BoraMorar/BoraMorar.csproj" />
   <Project Path="BoraMorarSystem/BoraMorarSystem.csproj" />
 </Solution>
