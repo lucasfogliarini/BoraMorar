@@ -1,8 +1,8 @@
 <Solution>
-  <Folder Name="/Systems/">
-    <File Path="BoraMorarSystem.cs" />
+  <Folder Name="/docs/">
     <File Path="README.md" />
   </Folder>
   <Project Path="BoraMorar.Tests/BoraMorar.Tests.csproj" />
   <Project Path="BoraMorar/BoraMorar.csproj" />
+  <Project Path="BoraMorarSystem/BoraMorarSystem.csproj" />
 </Solution>
