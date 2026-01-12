@@ -4,8 +4,9 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false,
-      "applicationUrl": "http://localhost:3001",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:3001/openapi/v1.json",
+      "applicationUrl": "http://localhost:3001/",
       "environmentVariables": {
         //"ASPNETCORE_ENVIRONMENT": "Production",
         "ASPNETCORE_ENVIRONMENT": "Development"

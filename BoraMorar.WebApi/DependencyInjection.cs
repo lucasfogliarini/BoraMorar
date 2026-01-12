@@ -13,13 +13,13 @@ public static class DependencyInjection
         builder.Services.AddProblemDetails();
         builder.AddCors();
         builder.Services.AddOpenApi();
-        builder.AddJwtBearerAuthentication();
+        //builder.AddJwtBearerAuthentication();
     }
     public static void UseWebApi(this WebApplication app)
     {
         app.UseCors();
-        app.UseAuthentication();
-        app.UseAuthorization();
+        //app.UseAuthentication();
+        //app.UseAuthorization();
         app.MapEndpoints();
         if (app.Environment.IsDevelopment())
         {
@@ -48,7 +48,7 @@ public static class DependencyInjection
         foreach (IEndpoint endpoint in endpoints)
         {
             endpoint.MapEndpoint(app)
-                .RequireAuthorization()
+                //.RequireAuthorization()
                 .RequireRateLimiting("per-user");
         }
 

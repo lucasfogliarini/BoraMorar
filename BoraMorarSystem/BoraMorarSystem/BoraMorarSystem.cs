@@ -1,4 +1,4 @@
-public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(boraKeycloakSystem.Builder)
+public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(boraKeycloakSystem.Builder, 3000)
 {
     const string SystemName = nameof(BoraMorarSystem);
     protected override string Name { get; init; } = SystemName;
@@ -6,15 +6,18 @@ public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(b
 
     public override IResourceBuilder<ExternalServiceResource> AddToResources()
     {
-        AddBoraApi();
-        return base.AddToResources();
+        var projectResource = AddBoraApi();
+        return base.AddToResources()
+                   .WithChildRelationship(projectResource);
     }
 
-    private void AddBoraApi()
+    private IResourceBuilder<ProjectResource> AddBoraApi()
     {
-        var boramorarApi = "boramorar-api";
-        Builder.AddProject(boramorarApi, "../BoraMorar.WebApi")
+        IResourceBuilder<ProjectResource> projectResource = Builder.AddProject(MainService.Name, "../BoraMorar.WebApi")
                 .WithReferenceRelationship(boraKeycloakSystem.KeycloakResource)
-                .WaitFor(boraKeycloakSystem.KeycloakResource);
+                .WaitFor(boraKeycloakSystem.KeycloakResource)
+                .WithHttpEndpoint(name: MainService.Name, port: MainService.Port, isProxied: false);
+
+        return projectResource;
     }
 }

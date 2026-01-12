@@ -3,8 +3,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	<AssemblyVersion>1.0.0</AssemblyVersion>
-	<AssemblyName>boramorar-api</AssemblyName>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+	  <AssemblyName>boramorar-api</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>    
