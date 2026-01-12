@@ -7,6 +7,10 @@
   </Folder>
   <Project Path="BoraMorar.Tests/BoraMorar.Tests.csproj" />
   <Project Path="BoraMorar.WebApi/BoraMorar.WebApi.csproj" />
+  <Project Path="BoraMorar.WebApp/BoraMorar.WebApp.esproj">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="BoraMorar/BoraMorar.csproj" />
   <Project Path="BoraMorarSystem/BoraMorarSystem.csproj" />
 </Solution>

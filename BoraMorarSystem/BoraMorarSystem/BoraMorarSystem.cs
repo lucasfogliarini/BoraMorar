@@ -6,12 +6,14 @@ public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(b
 
     public override IResourceBuilder<ExternalServiceResource> AddToResources()
     {
-        var projectResource = AddBoraApi();
+        var webApiResource = AddBoraWebApi();
+        var webAppResource = AddBoraWebApp(webApiResource);
         return base.AddToResources()
-                   .WithChildRelationship(projectResource);
+                   .WithChildRelationship(webApiResource)
+                   .WithChildRelationship(webAppResource);
     }
 
-    private IResourceBuilder<ProjectResource> AddBoraApi()
+    private IResourceBuilder<ProjectResource> AddBoraWebApi()
     {
         IResourceBuilder<ProjectResource> projectResource = Builder.AddProject(MainService.Name, "../BoraMorar.WebApi")
                 .WithReferenceRelationship(boraKeycloakSystem.KeycloakResource)
@@ -19,5 +21,14 @@ public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(b
                 .WithHttpEndpoint(name: MainService.Name, port: MainService.Port, isProxied: false);
 
         return projectResource;
+    }
+
+    private IResourceBuilder<IResource> AddBoraWebApp(IResourceBuilder<ProjectResource> boraWebApiResource)
+    {
+        var boraMorarWebApp = "boramorar-app";
+        var webApp = Builder.AddJavaScriptApp(boraMorarWebApp, "../BoraMorar.WebApp", "dev")
+                            .WaitFor(boraWebApiResource)
+                            .WithHttpEndpoint(name: boraMorarWebApp, port: MainService.Port + 1, isProxied: false);
+        return webApp;
     }
 }
