@@ -1,3 +1,5 @@
+namespace BoraKeycloakSystem;
+
 /// <summary>
 /// A service or server or container
 /// https://c4model.com/abstractions/container

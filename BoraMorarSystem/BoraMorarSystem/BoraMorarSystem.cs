@@ -1,9 +1,8 @@
-using Aspire.Hosting;
-
-public class BoraMorarSystem(KeycloakBoraMorarSystem keycloakBoraMorarSystem) : SystemC4(SystemName, keycloakBoraMorarSystem.Builder)
+public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(boraKeycloakSystem.Builder)
 {
     const string SystemName = nameof(BoraMorarSystem);
-    protected override string Url { get; set; } = "https://bora.earth/work/BoraMorar/";
+    protected override string Name { get; init; } = SystemName;
+    protected override string Url { get; init; } = $"https://bora.earth/work/{SystemName}/";
 
     public override IResourceBuilder<ExternalServiceResource> AddToResources()
     {
@@ -15,7 +14,7 @@ public class BoraMorarSystem(KeycloakBoraMorarSystem keycloakBoraMorarSystem) : 
     {
         var boramorarApi = "boramorar-api";
         Builder.AddProject(boramorarApi, "../BoraMorar.WebApi")
-                .WithReferenceRelationship(keycloakBoraMorarSystem.KeycloakResource)
-                .WaitFor(keycloakBoraMorarSystem.KeycloakResource);
+                .WithReferenceRelationship(boraKeycloakSystem.KeycloakResource)
+                .WaitFor(boraKeycloakSystem.KeycloakResource);
     }
 }
