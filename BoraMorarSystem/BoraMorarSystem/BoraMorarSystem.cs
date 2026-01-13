@@ -1,34 +1,39 @@
-public class BoraMorarSystem(BoraKeycloakSystem boraKeycloakSystem) : SystemC4(boraKeycloakSystem.Builder, 3000)
+using Aspire.Hosting;
+using Aspire.Hosting.JavaScript;
+
+public class BoraMorarSystem(IDistributedApplicationBuilder builder) : BoraKeycloakSystem(builder)
 {
     const string SystemName = nameof(BoraMorarSystem);
     protected override string Name { get; init; } = SystemName;
-    protected override string Url { get; init; } = $"https://bora.earth/work/{SystemName}/";
+    protected override string SystemDiagramUrl { get; init; } = $"https://bora.earth/work/{SystemName}/";
+    public Service<ProjectResource> BoraWebApi { get { return GetService<Service<ProjectResource>>(); } }
+    public Service<JavaScriptAppResource> BoraWebApp { get { return GetService<Service<JavaScriptAppResource>>(); } }
 
-    public override IResourceBuilder<ExternalServiceResource> AddToResources()
+    public override IResourceBuilder<ExternalServiceResource> AddSystem()
     {
-        var webApiResource = AddBoraWebApi();
-        var webAppResource = AddBoraWebApp(webApiResource);
-        return base.AddToResources()
-                   .WithChildRelationship(webApiResource)
-                   .WithChildRelationship(webAppResource);
+        var system = base.AddSystem();
+        AddBoraWebApi();
+        AddBoraWebApp();
+        return system
+                .WithChildRelationship(BoraWebApi.Resource)
+                .WithChildRelationship(BoraWebApp.Resource);
     }
 
-    private IResourceBuilder<ProjectResource> AddBoraWebApi()
+    private void AddBoraWebApi()
     {
-        IResourceBuilder<ProjectResource> projectResource = Builder.AddProject(MainService.Name, "../BoraMorar.WebApi")
-                .WithReferenceRelationship(boraKeycloakSystem.KeycloakResource)
-                .WaitFor(boraKeycloakSystem.KeycloakResource)
-                .WithHttpEndpoint(name: MainService.Name, port: MainService.Port, isProxied: false);
-
-        return projectResource;
+        var boraWebApiService = AddService<Service<ProjectResource>>(nameof(BoraWebApi));
+        boraWebApiService.Resource = Builder.AddProject(BoraWebApi.Name, "../BoraMorar.WebApi")
+                .WithReferenceRelationship(KeycloakService.Resource)
+                .WaitFor(KeycloakService.Resource)
+                .WithHttpEndpoint(name: BoraWebApi.Name, port: BoraWebApi.Port, isProxied: false);
     }
 
-    private IResourceBuilder<IResource> AddBoraWebApp(IResourceBuilder<ProjectResource> boraWebApiResource)
+    private void AddBoraWebApp()
     {
-        var boraMorarWebApp = "boramorar-app";
-        var webApp = Builder.AddJavaScriptApp(boraMorarWebApp, "../BoraMorar.WebApp", "dev")
-                            .WaitFor(boraWebApiResource)
-                            .WithHttpEndpoint(name: boraMorarWebApp, port: MainService.Port + 1, isProxied: false);
-        return webApp;
+        var boraWebAppService = AddService<Service<JavaScriptAppResource>>(nameof(BoraWebApp));
+        boraWebAppService.Resource = Builder.AddJavaScriptApp(boraWebAppService.Name, "../BoraMorar.WebApp")
+                            .WaitFor(BoraWebApi.Resource)
+                            .WithHttpEndpoint(name: boraWebAppService.Name, port: boraWebAppService.Port, isProxied: false)
+                            .WithEnvironment("PORT", boraWebAppService.Port.ToString());
     }
 }
