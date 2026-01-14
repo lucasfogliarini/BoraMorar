@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/docs/">
+    <File Path=".gitignore" />
+    <File Path="k6.js" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BoraMorarSystem/BoraMorarSystem.csproj" />
+  <Project Path="BoraMorarSystem.Tests/BoraMorarSystem.Tests.csproj" />
+  <Project Path="BoraMorarSystem.WebApi/BoraMorarSystem.WebApi.csproj" />
+  <Project Path="BoraMorarSystem.WebApp/BoraMorarSystem.WebApp.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="BoraMorarSystemApplication/BoraMorarSystemApplication.csproj">
+    <Deploy />
+  </Project>
+</Solution>

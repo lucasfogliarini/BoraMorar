@@ -1,4 +1,3 @@
-using Aspire.Hosting;
 using Aspire.Hosting.JavaScript;
 
 public class BoraMorarSystem(IDistributedApplicationBuilder builder) : BoraKeycloakSystem(builder)
@@ -22,7 +21,7 @@ public class BoraMorarSystem(IDistributedApplicationBuilder builder) : BoraKeycl
     private void AddBoraWebApi()
     {
         var boraWebApiService = AddService<Service<ProjectResource>>(nameof(BoraWebApi));
-        boraWebApiService.Resource = Builder.AddProject(BoraWebApi.Name, "../BoraMorar.WebApi")
+        boraWebApiService.Resource = Builder.AddProject(BoraWebApi.Name, $"../{SystemName}.WebApi")
                 .WithReferenceRelationship(KeycloakService.Resource)
                 .WaitFor(KeycloakService.Resource)
                 .WithHttpEndpoint(name: BoraWebApi.Name, port: BoraWebApi.Port, isProxied: false);
@@ -31,7 +30,7 @@ public class BoraMorarSystem(IDistributedApplicationBuilder builder) : BoraKeycl
     private void AddBoraWebApp()
     {
         var boraWebAppService = AddService<Service<JavaScriptAppResource>>(nameof(BoraWebApp));
-        boraWebAppService.Resource = Builder.AddJavaScriptApp(boraWebAppService.Name, "../BoraMorar.WebApp")
+        boraWebAppService.Resource = Builder.AddJavaScriptApp(boraWebAppService.Name, $"../{SystemName}.WebApp")
                             .WaitFor(BoraWebApi.Resource)
                             .WithHttpEndpoint(name: boraWebAppService.Name, port: boraWebAppService.Port, isProxied: false)
                             .WithEnvironment("PORT", boraWebAppService.Port.ToString());
