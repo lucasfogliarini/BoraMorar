@@ -1,10 +1,12 @@
-O **Bora Morar** habilita a educação financeira e acesso ao crédito para que famílias realizem o sonho da moradia própria, de forma responsável, sustentável e consciente no presente, em harmonia com a natureza, a sociedade e o futuro.
+O [Bora Morar](https://bora.earth/) é uma iniciativa que realiza e promove eventos, estudos, palestras, entrevistas e fóruns voltados à conexão de pessoas interessadas em carreira, finanças, moradia, filosofia, arquitetura e responsabilidade social, com foco na construção de um futuro mais inteligente, consciente e sustentável.
 
-A proposta do Bora Morar é apoiar quem está pensando em **comprar, financiar, trocar ou planejar um imóvel**, oferecendo clareza sobre opções, processos e impactos financeiros envolvidos em cada escolha. Mais do que tratar apenas de imóveis, o projeto aborda **planejamento financeiro, tomada de decisão consciente e visão de longo prazo**.
+O projeto é desenvolvido pela [__Bora Earth__](https://bora.earth/), um ecossistema colaborativo formado por parceiros que atuam de maneira integrada com arquitetos, construtoras, advogados, mentores e especialistas de diferentes áreas, promovendo soluções e reflexões sobre viver, construir e planejar com propósito.
 
-A iniciativa nasce com a convicção de que morar bem não é apenas adquirir um imóvel, mas **compreender o contexto, avaliar cenários financeiros e fazer escolhas alinhadas aos objetivos pessoais e familiares**.
+A [__Bora Earth__](https://bora.earth/) estabelece e fomenta parcerias estratégicas com instituições financeiras e cooperativas de crédito, como Itaú, Banrisul, Caixa Econômica Federal e Sicredi, viabilizando iniciativas, estudos e projetos alinhados à educação financeira, acesso à moradia e desenvolvimento responsável.
 
-O Bora Morar se posiciona como um ponto de apoio para transformar dúvidas em decisões mais seguras, combinando informação de qualidade, visão sistêmica e diálogo com parceiros estratégicos.
+# [Abra sua Conta Aqui e Agora!](https://bora.earth/about)
 
-## [BoraMorar Diagram (share)](https://s.icepanel.io/5EJNqZk1BJKyQN/53CH)
-## [@.bora.earth Landscape (edit)](https://app.icepanel.io/landscapes/v3MTVXKMPjCfg4LaPENe/)
+### [Educação Financeira e de Carreira do Bora Soluções](https://bora.earth/meetings)  
+
+#### [BoraDomain Landscape (view)](https://s.icepanel.io/5EJNqZk1BJKyQN/ZCh9)
+#### [BoraDomain Landscape (edit)](https://app.icepanel.io/landscapes/v3MTVXKMPjCfg4LaPENe/)
