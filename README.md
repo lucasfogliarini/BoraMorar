@@ -4,7 +4,7 @@ O projeto é desenvolvido pela [__Bora Earth__](https://bora.earth/), um ecossis
 
 A [__Bora Earth__](https://bora.earth/) estabelece e fomenta parcerias estratégicas com instituições financeiras e cooperativas de crédito, como Itaú, Banrisul, Caixa Econômica Federal e Sicredi, viabilizando iniciativas, estudos e projetos alinhados à educação financeira, acesso à moradia e desenvolvimento responsável.
 
-# [Abra sua Conta Aqui e Agora!](https://bora.earth/about)
+# [Abra sua Conta Aqui e Agora!](https://bora.earth/boramorar)
 
 ### [Educação Financeira e de Carreira do Bora Soluções](https://bora.earth/)  
 
