@@ -8,5 +8,5 @@ A [__Bora Earth__](https://bora.earth/) estabelece e fomenta parcerias estratég
 
 ### [Educação Financeira e de Carreira do Bora Soluções](https://bora.earth/)  
 
-#### [BoraDomain Landscape (view)](https://s.icepanel.io/5EJNqZk1BJKyQN/ZCh9)
+#### [BoraMorar Diagram (view)](https://s.icepanel.io/5EJNqZk1BJKyQN/Um4p)
 #### [BoraDomain Landscape (edit)](https://app.icepanel.io/landscapes/v3MTVXKMPjCfg4LaPENe/versions/latest/overview?domain=FdGvSQwOQ6)
