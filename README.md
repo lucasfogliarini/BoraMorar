@@ -1,4 +1,4 @@
-O [Bora Morar](https://bora.earth/) é uma iniciativa que realiza e promove eventos, estudos, palestras, entrevistas e fóruns voltados à conexão de pessoas interessadas em carreira, finanças, moradia, filosofia, arquitetura e responsabilidade social, com foco na construção de um futuro mais inteligente, consciente e sustentável.
+O [Bora Morar](https://bora.earth/boramorar) é uma iniciativa que realiza e promove eventos, estudos, palestras, entrevistas e fóruns voltados à conexão de pessoas interessadas em carreira, finanças, moradia, filosofia, arquitetura e responsabilidade social, com foco na construção de um futuro mais inteligente, consciente e sustentável.
 
 O projeto é desenvolvido pela [__Bora Earth__](https://bora.earth/), um ecossistema colaborativo formado por parceiros que atuam de maneira integrada com arquitetos, construtoras, advogados, mentores e especialistas de diferentes áreas, promovendo soluções e reflexões sobre viver, construir e planejar com propósito.
 
