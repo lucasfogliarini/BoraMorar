@@ -2,9 +2,7 @@ O [Bora Morar](https://bora.earth/morar) é uma iniciativa que realiza e promove
 
 O projeto é desenvolvido pela [__Bora Earth__](https://bora.earth/), um ecossistema colaborativo formado por parceiros que atuam de maneira integrada com arquitetos, construtoras, advogados, mentores e especialistas de diferentes áreas, promovendo soluções e reflexões sobre viver, construir e planejar com propósito.
 
-# [Abra sua Conta Aqui e Agora!](https://bora.earth/)
-
-### [Educação Financeira e de Carreira do Bora Soluções](https://bora.earth/)  
+### [Educação Financeira e Carreira](https://bora.earth/)  
 
 #### [BoraMorar Diagram (view)](https://s.icepanel.io/5EJNqZk1BJKyQN/Um4p)
 #### [BoraDomain Landscape (edit)](https://app.icepanel.io/landscapes/v3MTVXKMPjCfg4LaPENe/versions/latest/overview?domain=FdGvSQwOQ6)
